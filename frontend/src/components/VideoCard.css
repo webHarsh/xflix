@@ -1,0 +1,30 @@
+.video-container{
+    width: 320px;
+    height: auto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: normal;
+    padding: 10px;
+    display: inline-block
+}
+
+.video-container a{
+    text-decoration: none;
+    color:white;
+}
+
+.video-container h3,p{
+    margin: 0;
+    text-align: left;
+    
+}
+
+.video-container h3{
+    font-size: 0.9em;
+}
+
+.video-container p{
+    font-size: 0.9em;
+    color: rgb(173, 170, 170);
+    margin-bottom: 5px;
+    
+}
