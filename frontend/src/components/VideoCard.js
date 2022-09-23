@@ -39,8 +39,8 @@ const VideoCard = (videoD =[]) =>{
     
 
     return(
-        <div className="video-container video-tile">
-            <Link to={`/video/${video._id}`}>
+        <div className="video-container video-tile-link video-tile">
+            <Link className='video-tile-link' to={`/video/${video._id}`}>
             <img src={video.previewImage} alt="" className="card-img" />
             <h3 className="card-title">{video.title}</h3>
             <p>{days}</p>

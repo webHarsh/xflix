@@ -94,7 +94,7 @@ const Modal = (setModalOpen) =>{
             </div>
 
             <div className="upload-button">
-                <span id="uploadvideo" onClick={submitData}>Upload Video</span>
+                <span id="uploadvideo" className="upload-btn" onClick={submitData}>Upload Video</span>
                 <span className="close" onClick={e => setModalOpen.setModalOpen(false)} >Cancel</span>
 
             </div>
