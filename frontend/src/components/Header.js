@@ -32,7 +32,7 @@ const Header = (urlBuilder, fromMain = true) =>{
             
         </nav>
     )
-    console.log('workd')
+    
 
 
 }
