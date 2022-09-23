@@ -51,7 +51,7 @@
     background-color: #636566;
     border: 1px rgb(129, 127, 127) solid;
     border-radius: none;
-    background: url('../images/image.png') no-repeat;
+    background: url('../images/211817_search_strong_icon.png') no-repeat;
     background-size:23px;
     background-position: center;
 
@@ -80,7 +80,7 @@
 
 .upload-btn::before{
     content: '';
-    background: url('../images/image.png') no-repeat;
+    background: url('../images/326640_upload_icon.png') no-repeat;
     height: 0.8em;
     width: 0.8em;
     
