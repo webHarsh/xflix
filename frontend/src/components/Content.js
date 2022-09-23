@@ -53,7 +53,7 @@ const Content = () => {
                     document.getElementById(item).className = ''})
                 return {...prev, genre:[]}
             })
-            e.target.className = 'selectedli'
+            e.target.className = 'selectedli genre-btn'
             
         }
 
@@ -71,7 +71,7 @@ const Content = () => {
         else{
             
             if(!currentFilter.genre.length){
-                e.target.className = 'selectedli'
+                e.target.className = 'selectedli genre-btn'
                 tempGenre = [text];
                 document.getElementById('all').className = '';
                 setCurrentFilter(prev => {
@@ -80,7 +80,7 @@ const Content = () => {
             }
             else{
                 tempGenre = [...currentFilter.genre, text];
-                e.target.className = 'selectedli'
+                e.target.className = 'selectedli genre-btn'
                 setCurrentFilter(prev => {
                     return {...prev, genre: tempGenre}
                 })
