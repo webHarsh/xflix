@@ -151,7 +151,7 @@ const Content = () => {
 
    const sortBy =(by)=>{
     let tempV = allVideos
-    if(by === 'view-count'){
+    if(by === 'view count'){
         
         tempV = tempV.sort((item1, item2) => {
             if(item1.viewCount > item2.viewCount){

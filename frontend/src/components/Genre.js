@@ -7,15 +7,15 @@ const Genre = (filterClick) =>{
     return (
         <div className="container">
             <div className="by-genre">
-                <li  className='selectedli'  id='all' onClick={filterClick.filterClick}>All</li>
-                <li onClick={filterClick.filterClick} id='Education'>Education</li>
-                <li onClick={filterClick.filterClick} id='Sports'>Sports</li>
-                <li onClick={filterClick.filterClick} id='Comedy'>Comedy</li>
-                <li onClick={filterClick.filterClick} id='Lifestyle'>lifestyle</li>
+                <li  className='selectedli .genre-btn'  id='all' onClick={filterClick.filterClick}>All</li>
+                <li className='genre-btn' onClick={filterClick.filterClick} id='Education'>Education</li>
+                <li className='genre-btn' onClick={filterClick.filterClick} id='Sports'>Sports</li>
+                <li className='genre-btn' onClick={filterClick.filterClick} id='Comedy'>Comedy</li>
+                <li  className='genre-btn' onClick={filterClick.filterClick} id='Lifestyle'>lifestyle</li>
                 <select name="" id="selectFilter" onChange={e => filterClick.sortBy(e.target.value)}>
                     
                     <option className='icon' value="release-date">Release Date</option> 
-                    <option value="view-count">View Count</option>
+                    <option value="view count">View Count</option>
                 </select>
             </div>
 
