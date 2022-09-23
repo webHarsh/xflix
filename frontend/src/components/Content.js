@@ -211,7 +211,7 @@ const Content = () => {
         <Header urlBuilder={urlBuilder} filterData={currentFilter} fromMain={true} setModalOpen={setModalOpen} />
         {/* {console.log(checkFilter)} */}
         <Genre filterClick={checkFilter} filterClickRating ={filterClickRating} sortBy={sortBy}/>
-        <div className="content-container">
+        <div className="content-container video-tile-link">
             {allVideos.map(video => {
                 // {console.log(video._id)}
                 return(<VideoCard key={video._id} videoD= {video} />)

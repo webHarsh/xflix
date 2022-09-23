@@ -26,7 +26,7 @@ const Header = (urlBuilder, fromMain = true) =>{
             <span></span>
             </div>}
 
-            {urlBuilder.fromMain && <div onClick={e => urlBuilder.setModalOpen(true)} className="upload-btn"> 
+            {urlBuilder.fromMain && <div onClick={e => urlBuilder.setModalOpen(true)} id='upload-btn' className="upload-btn"> 
             <span  >Upload</span>  
             </div>}
             
