@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // gzip compression
-app.use(compression());
+app.use(compression());   
 
 // enable cors
 app.use(cors());
@@ -26,3 +26,4 @@ app.use('/v1', routes)
 
 module.exports = app
 
+ 

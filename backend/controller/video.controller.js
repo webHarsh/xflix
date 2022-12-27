@@ -5,9 +5,10 @@ const catchAsync = require('../utils/catchAsync');
 const ApiError = require("../utils/ApiError");
  
 
-
+ 
 const getAllVideos = catchAsync(async (req, res) => {
-    if(req.query){
+   
+    if(req.query.genre){
         
         if(req.query.genre) req.query.genre = req.query.genre.split(',');       
         const {value, error} = videoValidation.validateVideo(req.query);
@@ -20,9 +21,10 @@ const getAllVideos = catchAsync(async (req, res) => {
     }
 
     const videos = await videoService.getAllVideos();
-    res.status(200).send(videos);
+    
+    res.status(200).send(videos); 
 })
-
+ 
 const getVideoById = catchAsync(async (req, res) => {
     const {value, error} = videoValidation.validateId(req.params);
     if(error) return res.status(404).send('Invalid Video Id');
