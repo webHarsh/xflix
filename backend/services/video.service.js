@@ -15,7 +15,7 @@ const getAllVideos = async () => {
     
    
     try {       
-        const videos = await Video.find({contentRating: {$regex: /df/}});               
+        const videos = await Video.find({});               
         return videos 
     } catch (error) {
         return new Error(error.message)
@@ -24,12 +24,12 @@ const getAllVideos = async () => {
 
 const sortBy = (sortBy, videos) => {
     
-    
+     
     if(sortBy === 'releaseDate'){
         
         videos.sort((a,b) => {
-            if(a.releaseDate > b.releaseDate)return 1
-            else if(a.releaseDate < b.releaseDate) return -1
+            if(a.releaseDate > b.releaseDate)return -1
+            else if(a.releaseDate < b.releaseDate) return 1
             return 0;
             })
     }
@@ -53,18 +53,22 @@ const getFilterVideos = async (query) => {
         filterChecks.genre = new RegExp((query.genre.join('|')), "i");
     }
     
+    // if(query.contentRating ){
+    //     if(query.contentRating.length > 2){
+    //         filterChecks.contentRating = {$regex: new RegExp("(^1[0-"+query.contentRating[1]+"])|(^[0-9])\\+$", "g")};        
+    //     }else{
+    //         filterChecks.contentRating = {$regex: new RegExp("^[0-"+query.contentRating[0]+"]\\+$", "g")};
+    //     }
+    // }
     if(query.contentRating ){
-        if(query.contentRating.length > 2){
-            filterChecks.contentRating = {$regex: new RegExp("(^1[0-"+query.contentRating[1]+"])|(^[0-9])\\+$", "g")};        
-        }else{
-            filterChecks.contentRating = {$regex: new RegExp("^[0-"+query.contentRating[0]+"]\\+$", "g")};
-        }
+        filterChecks.contentRating = {$regex: new RegExp(`${query.contentRating}`, "g")};                
     }
 
     if(query.title){
-        filterChecks.title = new RegExp(query.title, 'i');
+        filterChecks.title = new RegExp(query.title, 'i'); 
     }
     try {       
+        console.log(filterChecks, 'filter' )
         const videos = await Video.find(filterChecks);      
         if(query.sortBy){
            sortBy(query.sortBy, videos);           
@@ -86,6 +90,7 @@ const addVideo = async (videoBody) => {
         releaseDate: new Date(videoBody.releaseDate),
         previewImage: videoBody.previewImage
     });
+    
     
     return video;
 }

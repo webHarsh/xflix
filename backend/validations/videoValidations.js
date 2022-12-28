@@ -6,13 +6,13 @@ const videoQuery = Joi.object().keys({
         contentRating: Joi.string().valid("Anyone", "7+", "12+", "16+", "18+").insensitive(),
         genre: Joi.array().items(Joi.string().valid("Education", "Sports", "Movies", "Comedy", "Lifestyle","All").insensitive()),
         sortBy: Joi.string().valid('releaseDate', 'viewCount').insensitive()
-    })
+    }).unknown(true); 
 
 const videoId =   Joi.object().keys({
         videoid:Joi.string().custom(objectId),
       })
 
-
+ 
 const videoBody = Joi.object().keys({
     videoLink: Joi.string().required().custom(videoLink),
 	title: Joi.string().required(),
@@ -42,7 +42,7 @@ const validateId = (id) => {
 const validateVideoBody = (body) => {
     return videoBody.validate(body);
 };
-
+ 
 module.exports = {
     validateVideo,
     validateId,

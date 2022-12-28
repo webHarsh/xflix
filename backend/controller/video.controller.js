@@ -7,24 +7,22 @@ const ApiError = require("../utils/ApiError");
 
  
 const getAllVideos = catchAsync(async (req, res) => {
-   
-    if(req.query.genre){
-        
+    if(req.query && Object.keys(req.query).length > 0){
+        if(Object.keys(req.query).includes('genres')) req.query.genre = req.query.genres;
         if(req.query.genre) req.query.genre = req.query.genre.split(',');       
         const {value, error} = videoValidation.validateVideo(req.query);
         if(error) return res.status(400).send(error.message);
         const videos = await videoService.getFilterVideos(value);
         
         // console.log(videos)
-        return res.status(200).send(videos);
+        return res.status(200).send({videos:videos});
 
     }
 
     const videos = await videoService.getAllVideos();
-    
-    res.status(200).send(videos); 
+    res.status(200).send({videos:videos}); 
 })
- 
+  
 const getVideoById = catchAsync(async (req, res) => {
     const {value, error} = videoValidation.validateId(req.params);
     if(error) return res.status(404).send('Invalid Video Id');
@@ -34,15 +32,17 @@ const getVideoById = catchAsync(async (req, res) => {
 
 const addVideo = catchAsync(async (req, res) => {
     if(req.body){
+        // console.log(req.body, ' this is ')
         const {value, error} = videoValidation.validateVideoBody(req.body);
         if(error) throw new ApiError(400, error.message); 
+        // console.log(value, ' this is value ');
         const video = await videoService.addVideo(value);
         return res.status(201).send(video);  
     } 
- 
+  
     res.status(400).send('missing video info');
     
-});
+});  
 
 const videoVoteUpdate = catchAsync(async (req,res) => {
 

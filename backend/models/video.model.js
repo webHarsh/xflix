@@ -4,7 +4,7 @@ const videoSchema = mongoose.Schema({
     videoLink: {
         type:String,
         validate(value) {
-            if (!value.match(/youtube.com\/embed\/\S{11}$/)) {
+            if (!value.match(/youtube.com\/embed\/\S*$/)) {
               throw new Error("provide valid youtube link");
             }
           }
@@ -35,8 +35,14 @@ const videoSchema = mongoose.Schema({
     },
 
     votes:{
-        upVotes:Number,
-        downVotes:Number,
+        upVotes:{
+            type:Number,
+            default: 0
+        },
+        downVotes:{
+            type:Number,
+            default: 0
+        },
     },
 
     viewCount:{

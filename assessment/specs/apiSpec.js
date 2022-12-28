@@ -46,7 +46,7 @@ describe("Search", () => {
       .its(0) //0th element
       .its("genre")
       .should("to.be.equal", "Education");
-  });
+  }); 
 
   it("GET /v1/videos?genres=Sports - Verify exactly 2 videos are available for Sports genre", () => {
     let response = api.getVideoByGenres("Sports");

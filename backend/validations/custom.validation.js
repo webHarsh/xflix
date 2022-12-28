@@ -6,11 +6,12 @@ const objectId = (value, helpers) => {
   };
 
 const videoLink = (value, helpers) => {
-if (!value.match(/^(https:\/\/)?youtube.com\/embed\/\S{11}$/)) {
-    return helpers.message('"{{#label}}" is required');
-}
-return value;
-};
+  
+    if (!value.match(/^(https:\/\/www\.)?youtube.com\/embed\/\S*$/)) {
+      return helpers.message('"{{#label}}" is required ');
+    }
+    return value;
+}; 
 
   module.exports = {
     objectId,
