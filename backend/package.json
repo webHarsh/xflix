@@ -12,6 +12,6 @@
 		"nodemon": "^2.0.20"
 	}, 
 	"scripts": {
-		"start": "PORT=8082 node index.js" 
+		"start": "node index.js" 
 	}
 }
